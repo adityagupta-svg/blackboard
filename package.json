@@ -1,0 +1,13 @@
+{
+  "name": "blackboard-website",
+  "private": true,
+  "version": "1.0.0",
+  "description": "External marketing site for Blackboard's Integration Partnership Program, with Client Login wired to the Partner Hub Experience Cloud site via Salesforce's Headless Identity API.",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --env-file=.env server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

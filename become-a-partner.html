@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Become a Partner</title>
+<meta name="description" content="Apply to join Blackboard's Integration Partnership Program. Tell us about your organization and we'll follow up with next steps." />
+<link rel="icon" type="image/svg+xml" href="assets/bbLogoMarkGreen.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Wittgenstein:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<!-- ===== HEADER ===== -->
+<header class="site-header" id="siteHeader">
+  <div class="nav-inner">
+    <a href="index.html" class="brand-logo" aria-label="Blackboard home">
+      <img src="assets/bbLogoGreen.svg" alt="Blackboard" width="140" height="32" />
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="tiers.html">Partner Tiers</a>
+      <a href="become-a-partner.html" aria-current="page">Become a Partner</a>
+    </nav>
+    <div class="nav-actions">
+      <button type="button" class="btn btn-secondary js-login-trigger">Client Login</button>
+      <button type="button" class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-controls="mobileNav" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobileNav" aria-label="Mobile">
+    <a href="index.html">Home</a>
+    <a href="tiers.html">Partner Tiers</a>
+    <a href="become-a-partner.html" aria-current="page">Become a Partner</a>
+    <button type="button" class="btn btn-primary btn-block js-login-trigger">Client Login</button>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- ===== PAGE HERO ===== -->
+  <section class="page-hero">
+    <div class="wrap">
+      <span class="eyebrow">Become a Partner</span>
+      <h1>Tell us what you're building.</h1>
+      <p>Fill in a few details about your organization and the tier you're interested in. We'll follow up with next steps — Community accounts are approved quickly; Developer Network and Advanced tiers start with a conversation.</p>
+    </div>
+  </section>
+
+  <!-- ===== LEAD FORM ===== -->
+  <section class="section" style="padding-top: 0;">
+    <div class="wrap lead-layout">
+
+      <div class="lead-form-panel">
+        <div id="leadSuccess" class="form-alert form-alert--success" hidden>
+          <strong>Thanks — we've got it.</strong>
+          <p style="margin-top:.4rem;">Your application has been received. A member of our partnerships team will follow up shortly.</p>
+        </div>
+
+        <p id="leadError" class="form-alert form-alert--error" role="alert" hidden></p>
+
+        <form id="leadForm" novalidate>
+          <div class="field-row field-row--2">
+            <div class="field">
+              <label for="leadFirstName">First name</label>
+              <input type="text" id="leadFirstName" name="firstName" autocomplete="given-name" required />
+            </div>
+            <div class="field">
+              <label for="leadLastName">Last name</label>
+              <input type="text" id="leadLastName" name="lastName" autocomplete="family-name" required />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="leadCompany">Company</label>
+            <input type="text" id="leadCompany" name="company" autocomplete="organization" required />
+          </div>
+
+          <div class="field-row field-row--2">
+            <div class="field">
+              <label for="leadEmail">Work email</label>
+              <input type="email" id="leadEmail" name="email" autocomplete="email" required />
+            </div>
+            <div class="field">
+              <label for="leadPhone">Phone</label>
+              <input type="tel" id="leadPhone" name="phone" autocomplete="tel" />
+            </div>
+          </div>
+
+          <div class="field-row field-row--2">
+            <div class="field">
+              <label for="leadCountry">Country</label>
+              <input type="text" id="leadCountry" name="country" autocomplete="country-name" />
+            </div>
+            <div class="field">
+              <label for="leadTier">Tier of interest</label>
+              <select id="leadTier" name="tier">
+                <option value="">Select a tier</option>
+                <option value="Community">Community</option>
+                <option value="Developer Network">Developer Network</option>
+                <option value="Academic DN">Academic DN</option>
+                <option value="Bronze">Bronze</option>
+                <option value="Silver">Silver</option>
+                <option value="Gold">Gold</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="leadMessage">Tell us about your integration</label>
+            <textarea id="leadMessage" name="message" rows="4" placeholder="What are you building, and what does your product connect to?"></textarea>
+          </div>
+
+          <!-- Honeypot: visually hidden (not display:none, so a naive bot check for
+               that doesn't skip it), removed from the accessibility tree, and never
+               reachable by keyboard. A human never sees or fills this in. -->
+          <div class="hp-field" aria-hidden="true">
+            <label for="leadWebsiteUrl">Leave this field blank</label>
+            <input type="text" id="leadWebsiteUrl" name="websiteUrl" tabindex="-1" autocomplete="off" aria-hidden="true" />
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block" id="leadSubmit">Submit application</button>
+        </form>
+      </div>
+
+      <aside>
+        <span class="eyebrow">What happens next</span>
+        <h2>From application to production.</h2>
+        <div class="lead-aside-list">
+          <div class="lead-aside-item">
+            <span class="dot" aria-hidden="true"></span>
+            <p><strong>Community</strong> — approved quickly, no cost. You'll get access to shared test sites and API documentation to start building right away.</p>
+          </div>
+          <div class="lead-aside-item">
+            <span class="dot" aria-hidden="true"></span>
+            <p><strong>Developer Network</strong> — our team confirms your details and sends payment instructions for the $3,000/yr subscription ($499/yr for qualifying academic and non-profit organizations).</p>
+          </div>
+          <div class="lead-aside-item">
+            <span class="dot" aria-hidden="true"></span>
+            <p><strong>Bronze, Silver, Gold</strong> — a partner manager reaches out to scope your integration and negotiate terms directly.</p>
+          </div>
+        </div>
+      </aside>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="assets/bbLogoLight.svg" alt="Blackboard" width="150" height="30" />
+        <p>The Integration Partnership Program connects developers, publishers, and institutions to the Blackboard platform millions of learners use every day.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Products</h5>
+        <a href="#">Blackboard LMS</a>
+        <a href="#">Blackboard Ally</a>
+        <a href="#">Blackboard Illuminate</a>
+        <a href="#">Blackboard Evaluate</a>
+        <a href="#">Institutional Effectiveness</a>
+        <a href="#">Cursive by Blackboard</a>
+      </div>
+      <div class="footer-col">
+        <h5>Trust &amp; Legal</h5>
+        <a href="#">Blackboard Trust Center</a>
+        <a href="#">Security</a>
+        <a href="#">Privacy Statement</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Our Commitment to Accessibility</a>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <a href="#">Our Story</a>
+        <a href="#">Careers</a>
+        <a href="#">Newsroom</a>
+        <a href="#">Events</a>
+        <a href="#">Partners</a>
+      </div>
+      <div class="footer-col">
+        <h5>Connect</h5>
+        <a href="tiers.html">Partner Tiers</a>
+        <a href="become-a-partner.html">Become a Partner</a>
+        <a href="#">Contact Us</a>
+        <button type="button" class="link-like js-login-trigger">Client Login</button>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Blackboard Inc. All rights reserved.</span>
+      <span>Demo site for the Integration Partnership Program.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== SHARED LOGIN MODAL ===== -->
+<div class="login-modal" id="loginModal" aria-hidden="true">
+  <div class="login-modal-backdrop"></div>
+  <div class="login-modal-panel" role="dialog" aria-modal="true" aria-labelledby="loginModalTitle">
+    <button type="button" class="login-modal-close" id="loginClose" aria-label="Close">&times;</button>
+    <h3 id="loginModalTitle">Client Login</h3>
+    <p class="login-modal-sub">Sign in to the Blackboard Partner Hub.</p>
+    <form id="loginForm" novalidate>
+      <div class="field">
+        <label for="loginUsername">Username</label>
+        <input type="text" id="loginUsername" name="username" autocomplete="username" required />
+      </div>
+      <div class="field">
+        <label for="loginPassword">Password</label>
+        <input type="password" id="loginPassword" name="password" autocomplete="current-password" required />
+      </div>
+      <p class="login-modal-error form-alert form-alert--error" id="loginError" role="alert" hidden></p>
+      <button type="submit" class="btn btn-primary btn-block" id="loginSubmit">Log In</button>
+      <p class="login-modal-fallback">
+        Trouble logging in?
+        <a id="loginFallback" href="/portal-login">Open the partner portal directly</a>.
+      </p>
+    </form>
+  </div>
+</div>
+
+<script src="headless-login.js"></script>
+<script src="lead-form.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
