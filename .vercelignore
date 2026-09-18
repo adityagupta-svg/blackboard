@@ -1,0 +1,6 @@
+# .env must never leave this machine: SF_CLIENT_ID is supplied to Vercel as a
+# Project Environment Variable instead. serveStatic() would refuse to serve it
+# anyway, but not uploading it at all is the stronger guarantee.
+.env
+node_modules
+.vercel

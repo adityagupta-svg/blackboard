@@ -18,15 +18,18 @@
 <header class="site-header" id="siteHeader">
   <div class="nav-inner">
     <a href="index.html" class="brand-logo" aria-label="Blackboard home">
-      <img src="assets/bbLogoGreen.svg" alt="Blackboard" width="140" height="32" />
+      <img class="brand-mark" src="assets/bbLogoMarkLight.svg" alt="" width="26" height="26" />
+      <img class="brand-word" src="assets/bbLogoLight.svg" alt="Blackboard" width="120" height="21" />
     </a>
     <nav class="nav-links" aria-label="Primary">
       <a href="index.html" aria-current="page">Home</a>
       <a href="tiers.html">Partner Tiers</a>
+      <a href="app-catalog.html">App Catalog</a>
       <a href="become-a-partner.html">Become a Partner</a>
     </nav>
     <div class="nav-actions">
-      <button type="button" class="btn btn-secondary js-login-trigger">Client Login</button>
+      <button type="button" class="btn btn-ghost-light js-login-trigger">Client Login</button>
+      <a href="become-a-partner.html" class="btn btn-accent nav-cta">Become a partner</a>
       <button type="button" class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-controls="mobileNav" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -35,8 +38,10 @@
   <nav class="mobile-nav" id="mobileNav" aria-label="Mobile">
     <a href="index.html" aria-current="page">Home</a>
     <a href="tiers.html">Partner Tiers</a>
+      <a href="app-catalog.html">App Catalog</a>
     <a href="become-a-partner.html">Become a Partner</a>
-    <button type="button" class="btn btn-primary btn-block js-login-trigger">Client Login</button>
+    <a href="become-a-partner.html" class="btn btn-accent btn-block" style="margin-top:1.25rem;">Become a partner</a>
+    <button type="button" class="btn btn-ghost-light btn-block js-login-trigger" style="margin-top:0.6rem;">Client Login</button>
   </nav>
 </header>
 
@@ -50,14 +55,25 @@
         <h1>Where great teaching finds its platform.</h1>
         <p class="hero-sub">Build integrations that reach millions of learners across thousands of institutions. Join a partner program with a public catalog, real developer support, and a clear path from a free sandbox to an enterprise go-to-market relationship.</p>
         <div class="hero-ctas">
-          <a href="become-a-partner.html" class="btn btn-primary">Become a partner</a>
-          <a href="tiers.html" class="btn btn-secondary">View partner tiers</a>
+          <a href="become-a-partner.html" class="btn btn-primary btn-lg">Become a partner <span class="btn-arrow">&rarr;</span></a>
+          <a href="tiers.html" class="btn btn-secondary btn-lg">View partner tiers</a>
+        </div>
+        <div class="hero-trust">
+          <div><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Free Community tier</span></div>
+          <div><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Public App Catalog listing</span></div>
+          <div><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>~48h developer support</span></div>
         </div>
       </div>
       <div class="hero-art">
         <div>
           <img src="assets/bbLogoMarkLight.svg" alt="" width="72" height="72" />
           <p class="hero-art-caption">600+ integration partners building on Blackboard today</p>
+          <div class="hero-art-metrics">
+            <div class="hero-art-metric"><strong>Millions</strong><span>Learners reached</span></div>
+            <div class="hero-art-metric"><strong>Thousands</strong><span>Institutions served</span></div>
+            <div class="hero-art-metric"><strong>5</strong><span>Partner tiers</span></div>
+            <div class="hero-art-metric"><strong>Free</strong><span>To start building</span></div>
+          </div>
         </div>
       </div>
     </div>
@@ -65,7 +81,7 @@
 
   <!-- ===== 2. ORIGIN NARRATIVE ===== -->
   <section class="section">
-    <div class="wrap narrative">
+    <div class="wrap narrative reveal">
       <div class="narrative-copy">
         <span class="eyebrow">Our story</span>
         <h2>Decades in and still building what's next.</h2>
@@ -101,7 +117,7 @@
         <h2>Each tool built around the learner.</h2>
         <p class="section-lead">Three product lines, three different kinds of integration surface — pick the one that matches what your product does.</p>
       </div>
-      <div class="solutions-grid">
+      <div class="solutions-grid reveal">
         <div class="solution-card">
           <div class="solution-icon" aria-hidden="true">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 10.5 12 4l9 6.5" /><path d="M5 10v9h14v-9" /><path d="M9 19v-5h6v5" /></svg>
@@ -134,7 +150,7 @@
         <h2>Millions of learners. Thousands of institutions.</h2>
         <p class="section-lead">Building on Blackboard means building for a platform that is already at the center of how those institutions teach.</p>
       </div>
-      <div class="proof-grid">
+      <div class="proof-grid reveal">
         <div class="proof-item">
           <strong>600+</strong>
           <span>Integration partners</span>
@@ -163,27 +179,48 @@
         <h2>Start free. Grow into what you need.</h2>
         <p class="section-lead">From a no-cost evaluation account to a negotiated enterprise partnership — every tier is a step up in production scale, support, and go-to-market reach.</p>
       </div>
-      <div class="tier-teaser-grid">
-        <article class="tier-card tier-card--green">
-          <span class="eyebrow">Get started</span>
+      <div class="tier-teaser-grid reveal">
+        <article class="tier-card">
+          <span class="badge">Get started</span>
           <h3>Community</h3>
           <p class="price">Free</p>
-          <p>Up to 25 production implementations, shared SaaS test sites, API docs, and App Catalog listing.</p>
-          <a href="tiers.html" class="btn btn-secondary">See full details</a>
+          <p>For individual developers, researchers, and teams validating an idea.</p>
+          <ul class="feature-list">
+            <li class="yes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Up to 25 production implementations</span></li>
+            <li class="yes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Shared SaaS test sites</span></li>
+            <li class="yes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Public API docs &amp; App Catalog listing</span></li>
+            <li class="no"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg><span>Dedicated Starter Site</span></li>
+            <li class="no"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg><span>Support Portal access</span></li>
+          </ul>
+          <a href="tiers.html" class="btn btn-secondary btn-block">See full details</a>
         </article>
-        <article class="tier-card tier-card--opportunity">
-          <span class="eyebrow">Most popular</span>
+        <article class="tier-card tier-card--featured">
+          <span class="badge badge--solid">Most popular</span>
           <h3>Developer Network</h3>
           <p class="price">$3,000<small>/yr</small></p>
-          <p>Up to 50 production implementations, Support Portal access, and website partner showcase. Academic / non-profit rate available.</p>
-          <a href="tiers.html" class="btn btn-secondary">See full details</a>
+          <p>For EdTech vendors and SaaS companies shipping commercial integrations.</p>
+          <ul class="feature-list">
+            <li class="yes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Up to 50 production implementations</span></li>
+            <li class="yes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Support Portal access (~48h SLA)</span></li>
+            <li class="yes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Website partner showcase</span></li>
+            <li class="yes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Academic / non-profit rate available</span></li>
+            <li class="no"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg><span>Dedicated partner manager</span></li>
+          </ul>
+          <a href="tiers.html" class="btn btn-primary btn-block">See full details</a>
         </article>
-        <article class="tier-card tier-card--vibrant">
-          <span class="eyebrow">Enterprise</span>
+        <article class="tier-card">
+          <span class="badge">Enterprise</span>
           <h3>Bronze / Silver / Gold</h3>
           <p class="price">Contact us</p>
-          <p>Unlimited production implementations, a dedicated partner manager, and prioritized support with a negotiated go-to-market plan.</p>
-          <a href="tiers.html" class="btn btn-secondary">See full details</a>
+          <p>For strategic vendors needing roadmap alignment and unlimited scale.</p>
+          <ul class="feature-list">
+            <li class="yes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Unlimited production implementations</span></li>
+            <li class="yes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Dedicated Blackboard partner manager</span></li>
+            <li class="yes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Prioritised technical escalation</span></li>
+            <li class="yes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Negotiated go-to-market plan</span></li>
+            <li class="yes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Dedicated Starter Site included</span></li>
+          </ul>
+          <a href="tiers.html" class="btn btn-secondary btn-block">See full details</a>
         </article>
       </div>
     </div>
@@ -192,11 +229,13 @@
   <!-- ===== 6. FAQ ===== -->
   <section class="section" style="background: var(--color-surface-2);">
     <div class="wrap">
+      <div class="faq-layout">
       <div class="section-head">
         <span class="eyebrow">FAQ</span>
         <h2>Questions, answered.</h2>
+        <p class="section-lead">Everything partners ask before they apply. Still unsure which tier fits? Send us the details and we will point you at the right one.</p>
       </div>
-      <div class="faq-list">
+      <div class="faq-list reveal">
         <div class="faq-item">
           <h3>
             <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-answer-1" id="faq-q-1">
@@ -263,6 +302,19 @@
           </div>
         </div>
       </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 7. CTA BAND ===== -->
+  <section class="cta-band">
+    <div class="wrap">
+      <h2>Ready to build on Blackboard?</h2>
+      <p>Start on the free Community tier today, or talk to our partnerships team about an enterprise agreement.</p>
+      <div class="hero-ctas">
+        <a href="become-a-partner.html" class="btn btn-accent btn-lg">Become a partner <span class="btn-arrow">&rarr;</span></a>
+        <a href="tiers.html" class="btn btn-secondary btn-lg">Compare all tiers</a>
+      </div>
     </div>
   </section>
 
@@ -275,6 +327,11 @@
       <div class="footer-brand">
         <img src="assets/bbLogoLight.svg" alt="Blackboard" width="150" height="30" />
         <p>The Integration Partnership Program connects developers, publishers, and institutions to the Blackboard platform millions of learners use every day.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Blackboard on LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.07 1.4-2.07 2.86V21H9z"/></svg></a>
+          <a href="#" aria-label="Blackboard on X"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 3h3.2l-7 8 8.2 10h-6.4l-5-6.1L4.7 21H1.5l7.5-8.6L1.2 3h6.6l4.5 5.6zm-1.1 16h1.8L7.7 4.8H5.8z"/></svg></a>
+          <a href="#" aria-label="Blackboard on YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.2-.4-4.7a3 3 0 0 0-2.1-2.1C18.9 4.8 12 4.8 12 4.8s-6.9 0-8.5.4a3 3 0 0 0-2.1 2.1C1 8.8 1 12 1 12s0 3.2.4 4.7a3 3 0 0 0 2.1 2.1c1.6.4 8.5.4 8.5.4s6.9 0 8.5-.4a3 3 0 0 0 2.1-2.1C23 15.2 23 12 23 12zM9.8 15.3V8.7l5.7 3.3z"/></svg></a>
+        </div>
       </div>
       <div class="footer-col">
         <h5>Products</h5>
@@ -304,6 +361,7 @@
       <div class="footer-col">
         <h5>Connect</h5>
         <a href="tiers.html">Partner Tiers</a>
+      <a href="app-catalog.html">App Catalog</a>
         <a href="become-a-partner.html">Become a Partner</a>
         <a href="#">Contact Us</a>
         <button type="button" class="link-like js-login-trigger">Client Login</button>

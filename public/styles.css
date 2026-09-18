@@ -1,0 +1,1874 @@
+/* =====================================================================
+   Blackboard Integration Partnership Program — marketing site stylesheet
+   All tokens below are copied verbatim from
+   documentation/AI-agent-code-work/blackboard-integration-partner-renewal-demo/
+   14-blackboard-com-design-tokens.md — do not invent colours, sizes or radii.
+   ===================================================================== */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* ---- Brand ---- */
+  --color-primary-green: #1d5245;
+  --color-green-300:     #1d5245;
+  --color-green-200:     #40b598;
+  --color-green-100:     #d9f2ec;
+  --color-primary-dark:  #172622;
+  --color-primary-light: #f9f7f6;
+
+  /* ---- Neutral ramp (warm, green-leaning — never grey) ---- */
+  --color-base-50:  #f9f7f6;
+  --color-base-100: #eeebe8;
+  --color-base-200: #e3e0de;
+  --color-base-300: #ceccca;
+  --color-base-400: #918f8d;
+  --color-base-500: #626a68;
+  --color-base-600: #495a55;
+  --color-base-700: #314943;
+  --color-base-800: #1f332e;
+  --color-base-900: #172622;
+  --color-base-black: #080d0b;
+  --color-base-white: #ffffff;
+
+  /* ---- Secondary accent families ---- */
+  --color-fireside-100: #fdf2ed;
+  --color-fireside-200: #d0825a;
+  --color-fireside-300: #933d10;
+
+  --color-opportunity-100: #edf8fc;
+  --color-opportunity-200: #bbe6f5;
+  --color-opportunity-300: #a2c6dc;
+
+  --color-vibrant-100: #f2edfd;
+  --color-vibrant-200: #bfa4f4;
+  --color-vibrant-300: #5b4587;
+
+  --color-semester-100: #f9f7f6;
+  --color-semester-200: #f1dbcf;
+  --color-semester-300: #885e56;
+
+  /* ---- Semantic (light theme values — this site ships light theme only) ---- */
+  --color-text-strong:   #172622;
+  --color-text-medium:   #495a55;
+  --color-text-subtle:   #626a68;
+  --color-border-subtle: #e3e0de;
+  --color-border-medium: #ceccca;
+  --color-border-strong: #f9f7f6;
+  --color-surface-1: #ffffff;
+  --color-surface-2: #f9f7f6;
+  --color-surface-3: #eeebe8;
+  --color-system-error:       #ff3e00;
+  --color-system-error-dark:  #c23400;
+  --color-system-error-light: #ff3e001a;
+
+  /* ---- Elevation (tinted with ink #172622, never pure black) ---- */
+  --elevation-1: 0 2px 6px -1px #17262214, 0 1px 2px 0 #1726220f;
+  --elevation-2: 0 6px 16px -2px #1726221a, 0 2px 4px -1px #1726220f;
+  --elevation-3: 0 16px 32px -4px #17262224, 0 4px 8px -2px #17262214;
+
+  /* ---- Type families ---- */
+  --font-family-body: 'IBM Plex Sans', Helvetica, sans-serif;
+  --font-family-display: 'Wittgenstein', Georgia, serif;
+
+  /* ---- Fluid type scale (copied verbatim) ---- */
+  --font-size-display-l:  clamp(4rem,     6.5vw, 6rem);
+  --font-size-display-m:  clamp(3rem,     5.5vw, 5rem);
+  --font-size-display-s:  clamp(2rem,     4.5vw, 4rem);
+  --font-size-headline-l: clamp(1.75rem,  3.5vw, 3rem);
+  --font-size-headline-m: clamp(1.5rem,   2.5vw, 2rem);
+  --font-size-headline-s: clamp(1.25rem,  2vw,   1.5rem);
+  --font-size-title-xl:   clamp(1.5rem,   3vw,   2.5rem);
+  --font-size-title-l:    clamp(1.25rem,  2.5vw, 2rem);
+  --font-size-title-m:    clamp(1.125rem, 2vw,   1.5rem);
+  --font-size-title-s:    clamp(1rem,     1.5vw, 1.25rem);
+  --font-size-body-l:     clamp(1.25rem,  2.5vw, 2rem);
+  --font-size-body-ml:    clamp(1.125rem, 2vw,   1.5rem);
+  --font-size-body-m:     clamp(1rem,     1.5vw, 1.25rem);
+  --font-size-body-s:     1rem;
+  --font-size-label-l:    clamp(1rem,     1.5vw, 1.25rem);
+  --font-size-label-m:    1rem;
+  --font-size-label-s:    0.875rem;
+
+  /* ---- Shape ---- */
+  --radius-none: 0;
+  --radius-s:    0.25rem;
+  --radius-m:    0.5rem;
+  --radius-l:    1.5rem;
+  --radius-full: 50%;
+
+  /* ---- Layout helpers (not a documented token, but used consistently) ---- */
+  --space-8:  0.5rem;
+  --max-width: 1200px;
+  --nav-h: 76px;
+  --transition: 0.22s cubic-bezier(.4,0,.2,1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: var(--font-family-body);
+  color: var(--color-text-strong);
+  background: var(--color-primary-light);
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; display: block; }
+
+a { color: inherit; }
+
+ul, ol { list-style: none; }
+
+button { font-family: inherit; }
+
+/* ===== TYPOGRAPHY ===== */
+h1, h2, h3, h4 {
+  font-family: var(--font-family-display);
+  color: var(--color-text-strong);
+  line-height: 1.15;
+  font-weight: 600;
+}
+
+h1 { font-size: var(--font-size-display-m); }
+h2 { font-size: var(--font-size-headline-l); }
+h3 { font-size: var(--font-size-title-l); }
+h4 { font-size: var(--font-size-title-m); }
+
+p { font-size: var(--font-size-body-m); color: var(--color-text-medium); }
+
+.eyebrow {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-label-s);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-green-300);
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.section-lead {
+  font-size: var(--font-size-body-ml);
+  color: var(--color-text-medium);
+  max-width: 62ch;
+  margin-top: 1rem;
+}
+
+/* ===== FOCUS ===== */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--color-green-200);
+  outline-offset: 2px;
+  border-radius: var(--radius-s);
+}
+
+/* ===== LAYOUT HELPERS ===== */
+.wrap {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 640px) {
+  .wrap { padding: 0 2rem; }
+}
+
+.section {
+  padding: clamp(3rem, 7vw, 6rem) 0;
+}
+
+.section-head {
+  max-width: 68ch;
+  margin-bottom: clamp(2rem, 5vw, 3.5rem);
+}
+
+.band-dark {
+  background: var(--color-primary-dark);
+  color: var(--color-primary-light);
+}
+.band-dark h1, .band-dark h2, .band-dark h3, .band-dark h4 {
+  color: var(--color-primary-light);
+}
+.band-dark p { color: var(--color-base-200); }
+
+/* A white card sitting inside a dark band is a LIGHT surface again, so the band's
+   inverted ink must not reach into it — otherwise the card's heading and copy are
+   near-white on near-white and effectively invisible. Re-assert the normal ink for
+   anything inside such a card. */
+.band-dark .solution-card h1,
+.band-dark .solution-card h2,
+.band-dark .solution-card h3,
+.band-dark .solution-card h4 { color: var(--color-text-strong); }
+.band-dark .solution-card p { color: var(--color-text-medium); }
+
+.band-green {
+  background: var(--color-primary-green);
+  color: #fff;
+}
+.band-green h1, .band-green h2, .band-green h3 { color: #fff; }
+.band-green p { color: var(--color-green-100); }
+
+/* ===== BUTTONS =====
+   Shape is brand-mandated: --radius-s (.25rem). Blackboard's primary button is
+   near-square, NOT a pill — see 14-blackboard-com-design-tokens.md section 3. The
+   reference screenshots show pill buttons, but those come from the internal Partner
+   Hub shell (doc 12), a different palette. Brand tokens win here. */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-8);
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-label-m);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  padding: 0.85rem 1.6rem;
+  border-radius: var(--radius-s);
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  line-height: 1;
+  position: relative;
+  transition: background var(--transition), color var(--transition),
+              transform var(--transition), box-shadow var(--transition),
+              border-color var(--transition);
+}
+.btn:active { transform: translateY(1px); }
+
+/* Arrow affordance: nudges on hover so the button reads as "goes somewhere". */
+.btn-arrow { display: inline-block; transition: transform var(--transition); }
+.btn:hover .btn-arrow { transform: translateX(3px); }
+
+.btn-primary {
+  background: var(--color-primary-green);
+  color: #fff;
+  box-shadow: var(--elevation-1);
+}
+.btn-primary:hover {
+  background: var(--color-base-800);
+  box-shadow: var(--elevation-2);
+  transform: translateY(-2px);
+}
+
+/* Bright accent green — reserved for the single highest-intent CTA on a surface
+   (header "Become a partner", featured tier). Dark ink on #40b598 clears AA. */
+.btn-accent {
+  background: var(--color-green-200);
+  color: var(--color-primary-dark);
+  box-shadow: var(--elevation-1);
+}
+.btn-accent:hover {
+  background: var(--color-green-100);
+  box-shadow: var(--elevation-2);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 1px solid var(--color-primary-green);
+  color: var(--color-primary-green);
+}
+.btn-secondary:hover {
+  background: var(--color-green-100);
+  transform: translateY(-2px);
+}
+
+/* Outlined button for dark surfaces (the header, dark bands). White at low alpha
+   rather than a new hue, so it stays inside the documented palette. */
+.btn-ghost-light {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.28);
+  color: #fff;
+}
+.btn-ghost-light:hover {
+  background: rgba(255,255,255,0.14);
+  border-color: rgba(255,255,255,0.5);
+  transform: translateY(-2px);
+}
+
+.btn-lg {
+  padding: 1.05rem 2.1rem;
+  font-size: var(--font-size-label-l);
+}
+
+/* On a dark band, secondary needs light-on-dark contrast */
+.band-dark .btn-secondary, .band-green .btn-secondary {
+  border-color: rgba(255,255,255,0.45);
+  color: #fff;
+}
+.band-dark .btn-secondary:hover, .band-green .btn-secondary:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: #fff;
+}
+
+.btn-block { width: 100%; }
+
+/* ===== HEADER / NAV =====
+   Dark bar on the ink token (#172622), matching the reference screenshots. The
+   logo swaps to bbLogoLight.svg in the markup for contrast. */
+.site-header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: var(--nav-h);
+  background: rgba(23, 38, 34, 0.92);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  transition: background var(--transition), box-shadow var(--transition);
+}
+.site-header.is-scrolled {
+  background: rgba(23, 38, 34, 0.98);
+  box-shadow: 0 10px 30px -12px rgba(8,13,11,0.6);
+}
+
+.nav-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) { .nav-inner { padding: 0 2rem; } }
+
+.brand-logo { display: flex; align-items: center; height: 32px; flex-shrink: 0; }
+.brand-logo img { height: 30px; width: auto; }
+
+.nav-links {
+  display: none;
+  align-items: center;
+  gap: 0.35rem;
+  margin-left: 1.5rem;
+  margin-right: auto;
+}
+.nav-links a {
+  position: relative;
+  font-size: var(--font-size-label-m);
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--color-base-200);
+  padding: 0.55rem 0.9rem;
+  border-radius: var(--radius-s);
+  transition: color var(--transition), background var(--transition);
+}
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0.9rem;
+  right: 0.9rem;
+  bottom: 0.15rem;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--color-green-200);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition);
+}
+.nav-links a:hover { color: #fff; background: rgba(255,255,255,0.06); }
+.nav-links a:hover::after,
+.nav-links a[aria-current="page"]::after { transform: scaleX(1); }
+.nav-links a[aria-current="page"] { color: #fff; }
+
+.nav-actions { display: flex; align-items: center; gap: 0.6rem; flex-shrink: 0; }
+
+/* The header's own CTA pair is compact — full-size buttons crowd a 76px bar. */
+.nav-actions .btn { padding: 0.6rem 1.1rem; font-size: var(--font-size-label-s); }
+.nav-cta { display: none; }
+@media (min-width: 1040px) { .nav-cta { display: inline-flex; } }
+
+.nav-hamburger {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(255,255,255,0.28);
+  border-radius: var(--radius-s);
+  background: rgba(255,255,255,0.06);
+  cursor: pointer;
+  transition: background var(--transition);
+}
+.nav-hamburger:hover { background: rgba(255,255,255,0.14); }
+.nav-hamburger span {
+  display: block;
+  height: 2px;
+  width: 20px;
+  margin: 0 auto;
+  background: #fff;
+  transition: transform var(--transition), opacity var(--transition);
+}
+.nav-hamburger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.is-open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+@media (min-width: 900px) {
+  .nav-links { display: flex; }
+  .nav-hamburger { display: none; }
+}
+
+/* Mobile nav drawer — dark, to match the bar it drops out of */
+.mobile-nav {
+  position: fixed;
+  inset: var(--nav-h) 0 0 0;
+  background: var(--color-primary-dark);
+  z-index: 999;
+  transform: translateX(100%);
+  transition: transform var(--transition);
+  overflow-y: auto;
+  padding: 1.5rem 1.25rem 2rem;
+}
+.mobile-nav.is-open { transform: translateX(0); }
+/* :not(.btn) matters — `.mobile-nav a` (0,1,1) outranks `.btn-accent` (0,1,0),
+   so without it the drawer's CTA is rendered as a nav link: white text on the
+   accent green (about 1.9:1) and left-aligned instead of a centred button. */
+.mobile-nav a:not(.btn) {
+  display: block;
+  font-size: var(--font-size-title-s);
+  font-weight: 500;
+  padding: 1rem 0.25rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  text-decoration: none;
+  color: var(--color-base-100);
+  transition: color var(--transition), padding-left var(--transition);
+}
+.mobile-nav a:not(.btn):hover { color: var(--color-green-200); padding-left: 0.6rem; }
+.mobile-nav a:not(.btn)[aria-current="page"] { color: var(--color-green-200); }
+.mobile-nav .btn { margin-top: 1.25rem; }
+
+@media (min-width: 900px) {
+  .mobile-nav { display: none; }
+}
+
+/* ===== HERO ===== */
+.hero {
+  padding: clamp(3rem, 8vw, 6.5rem) 0 clamp(3rem, 6vw, 5rem);
+  background: linear-gradient(180deg, var(--color-green-100) 0%, var(--color-primary-light) 65%);
+}
+.hero-grid {
+  display: grid;
+  gap: 2.5rem;
+  align-items: center;
+}
+@media (min-width: 900px) {
+  .hero-grid { grid-template-columns: 1.1fr 0.9fr; gap: 3rem; }
+}
+.hero h1 { font-size: var(--font-size-display-m); max-width: 14ch; }
+.hero-sub {
+  margin-top: 1.25rem;
+  font-size: var(--font-size-body-ml);
+  color: var(--color-text-medium);
+  max-width: 52ch;
+}
+.hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.hero-art {
+  border-radius: var(--radius-l);
+  background: var(--color-primary-green);
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--elevation-2);
+  padding: 2.5rem;
+}
+.hero-art img { height: 64px; width: auto; }
+.hero-art-caption {
+  color: var(--color-green-100);
+  font-size: var(--font-size-label-s);
+  text-align: center;
+  margin-top: 1rem;
+}
+
+/* ===== TWO-COLUMN NARRATIVE ===== */
+.narrative {
+  display: grid;
+  gap: 2rem;
+  align-items: start;
+}
+@media (min-width: 860px) {
+  .narrative { grid-template-columns: 0.9fr 1.1fr; gap: 3.5rem; }
+}
+.narrative-copy p + p { margin-top: 1rem; }
+.narrative-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+.stat-card {
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-m);
+  padding: 1.25rem;
+}
+.stat-card strong {
+  display: block;
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-headline-m);
+  color: var(--color-primary-green);
+}
+.stat-card span { font-size: var(--font-size-label-s); color: var(--color-text-subtle); }
+
+/* ===== SOLUTIONS GRID ===== */
+.solutions-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 720px) {
+  .solutions-grid { grid-template-columns: repeat(3, 1fr); }
+}
+.solution-card {
+  background: var(--color-surface-1);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-m);
+  padding: 2rem 1.75rem;
+  box-shadow: var(--elevation-1);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.solution-card:hover { transform: translateY(-4px); box-shadow: var(--elevation-2); }
+.solution-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-m);
+  background: var(--color-green-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  color: var(--color-primary-green);
+}
+.solution-card h3 { margin-bottom: 0.6rem; }
+.solution-card p { margin-bottom: 0; }
+
+/* ===== PROOF STRIP ===== */
+.proof-strip {
+  padding: clamp(2.5rem, 5vw, 4rem) 0;
+}
+.proof-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(2, 1fr);
+  text-align: center;
+}
+@media (min-width: 720px) {
+  .proof-grid { grid-template-columns: repeat(4, 1fr); }
+}
+.proof-item strong {
+  display: block;
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-headline-m);
+}
+.proof-item span { font-size: var(--font-size-label-s); }
+
+/* ===== TIER TEASER CARDS ===== */
+.tier-teaser-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 780px) {
+  .tier-teaser-grid { grid-template-columns: repeat(3, 1fr); }
+}
+.tier-card {
+  border-radius: var(--radius-m);
+  padding: 2rem 1.75rem;
+  border: 1px solid var(--color-border-subtle);
+  background: var(--color-surface-1);
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--elevation-1);
+}
+.tier-card .price {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-headline-m);
+  color: var(--color-primary-green);
+  margin: 0.75rem 0 1rem;
+}
+.tier-card .price small {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-label-s);
+  color: var(--color-text-subtle);
+  font-weight: 400;
+}
+.tier-card ul { margin: 1rem 0 1.5rem; display: grid; gap: 0.6rem; }
+.tier-card li {
+  font-size: var(--font-size-body-s);
+  color: var(--color-text-medium);
+  padding-left: 1.4rem;
+  position: relative;
+}
+.tier-card li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.45rem;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-green-200);
+}
+.tier-card .btn { margin-top: auto; }
+
+.tier-card--fireside { background: var(--color-fireside-100); border-color: var(--color-fireside-200); }
+.tier-card--fireside .price { color: var(--color-fireside-300); }
+.tier-card--fireside li::before { background: var(--color-fireside-200); }
+
+.tier-card--opportunity { background: var(--color-opportunity-100); border-color: var(--color-opportunity-300); }
+.tier-card--opportunity .price { color: var(--color-base-700); }
+.tier-card--opportunity li::before { background: var(--color-opportunity-300); }
+
+.tier-card--vibrant { background: var(--color-vibrant-100); border-color: var(--color-vibrant-200); }
+.tier-card--vibrant .price { color: var(--color-vibrant-300); }
+.tier-card--vibrant li::before { background: var(--color-vibrant-200); }
+
+.tier-card--semester { background: var(--color-semester-100); border-color: var(--color-semester-300); }
+.tier-card--semester .price { color: var(--color-semester-300); }
+.tier-card--semester li::before { background: var(--color-semester-300); }
+
+.tier-card--green { background: var(--color-green-100); border-color: var(--color-green-200); }
+.tier-card--green .price { color: var(--color-green-300); }
+.tier-card--green li::before { background: var(--color-green-300); }
+
+/* ===== BENEFITS TABLE ===== */
+.table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.benefits-table {
+  width: 100%;
+  min-width: 720px;
+  border-collapse: collapse;
+  background: var(--color-surface-1);
+  border-radius: var(--radius-m);
+  overflow: hidden;
+}
+.benefits-table caption {
+  text-align: left;
+  font-size: var(--font-size-label-s);
+  color: var(--color-text-subtle);
+  padding-bottom: 0.75rem;
+}
+.benefits-table th, .benefits-table td {
+  text-align: left;
+  padding: 0.9rem 1.1rem;
+  border-bottom: 1px solid var(--color-border-subtle);
+  font-size: var(--font-size-body-s);
+  color: var(--color-text-medium);
+}
+.benefits-table thead th {
+  background: var(--color-primary-dark);
+  color: #fff;
+  font-family: var(--font-family-display);
+  font-weight: 600;
+}
+.benefits-table tbody th {
+  font-weight: 600;
+  color: var(--color-text-strong);
+  background: var(--color-surface-2);
+}
+.benefits-table tbody tr:last-child td,
+.benefits-table tbody tr:last-child th { border-bottom: none; }
+
+/* ===== FAQ ACCORDION ===== */
+.faq-list {
+  max-width: 76ch;
+  display: grid;
+  gap: 0.75rem;
+}
+.faq-item {
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-m);
+  background: var(--color-surface-1);
+  overflow: hidden;
+}
+.faq-question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 1.1rem 1.25rem;
+  font-size: var(--font-size-title-s);
+  font-weight: 500;
+  color: var(--color-text-strong);
+  cursor: pointer;
+}
+.faq-question .faq-icon {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border-medium);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--transition), background var(--transition);
+  color: var(--color-primary-green);
+}
+.faq-question[aria-expanded="true"] .faq-icon {
+  transform: rotate(45deg);
+  background: var(--color-green-100);
+}
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--transition);
+}
+.faq-answer-inner { padding: 0 1.25rem 1.25rem; }
+.faq-answer-inner p { font-size: var(--font-size-body-s); }
+
+/* ===== FOOTER ===== */
+.site-footer {
+  background: var(--color-primary-dark);
+  color: var(--color-base-200);
+  padding: clamp(3rem, 6vw, 4.5rem) 0 1.5rem;
+}
+.footer-top {
+  display: grid;
+  gap: 2.5rem;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 720px) {
+  .footer-top { grid-template-columns: 1.3fr repeat(4, 1fr); }
+}
+.footer-brand img { height: 30px; margin-bottom: 1rem; }
+.footer-brand p { color: var(--color-base-300); max-width: 32ch; font-size: var(--font-size-body-s); }
+.footer-col h5 {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-label-s);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-green-200);
+  margin-bottom: 1rem;
+}
+.footer-col a {
+  display: block;
+  text-decoration: none;
+  color: var(--color-base-200);
+  font-size: var(--font-size-body-s);
+  padding: 0.35rem 0;
+}
+.footer-col a:hover { color: #fff; }
+.footer-col button.link-like {
+  background: none;
+  border: none;
+  color: var(--color-base-200);
+  font-size: var(--font-size-body-s);
+  padding: 0.35rem 0;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+}
+.footer-col button.link-like:hover { color: #fff; }
+.footer-bottom {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-base-700);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
+  font-size: var(--font-size-label-s);
+  color: var(--color-base-400);
+}
+
+/* ===== LOGIN MODAL ===== */
+.login-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: none;
+}
+.login-modal.is-open { display: block; }
+.login-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(8,13,11,0.55);
+}
+.login-modal-panel {
+  position: relative;
+  z-index: 1;
+  max-width: 420px;
+  margin: 8vh auto 0;
+  background: var(--color-surface-1);
+  border-radius: var(--radius-m);
+  box-shadow: var(--elevation-3);
+  padding: 2rem 1.75rem 1.75rem;
+  width: calc(100% - 2rem);
+}
+.login-modal-close {
+  position: absolute;
+  top: 0.9rem;
+  right: 0.9rem;
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-s);
+  border: 1px solid var(--color-border-medium);
+  background: var(--color-surface-1);
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--color-text-medium);
+}
+.login-modal-sub { margin: 0.5rem 0 1.5rem; }
+.login-modal-error {
+  background: var(--color-system-error-light);
+  color: var(--color-system-error-dark);
+  border-radius: var(--radius-s);
+  padding: 0.65rem 0.85rem;
+  font-size: var(--font-size-body-s);
+  margin-bottom: 1rem;
+}
+.login-modal-fallback {
+  margin-top: 1.25rem;
+  font-size: var(--font-size-label-s);
+  color: var(--color-text-subtle);
+  text-align: center;
+}
+.login-modal-fallback a { color: var(--color-primary-green); font-weight: 500; }
+
+/* ===== FORMS (shared: login + lead form) ===== */
+.field {
+  display: grid;
+  gap: 0.4rem;
+  margin-bottom: 1.1rem;
+}
+.field label {
+  font-size: var(--font-size-label-s);
+  font-weight: 500;
+  color: var(--color-text-strong);
+}
+.field input,
+.field select,
+.field textarea {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-body-s);
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--color-border-medium);
+  border-radius: var(--radius-s);
+  background: var(--color-surface-1);
+  color: var(--color-text-strong);
+  width: 100%;
+}
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: var(--color-primary-green);
+}
+.field-row {
+  display: grid;
+  gap: 1.1rem;
+}
+@media (min-width: 640px) {
+  .field-row--2 { grid-template-columns: 1fr 1fr; }
+}
+
+/* Honeypot: visually hidden but still in the accessibility tree removed via aria-hidden,
+   never display:none (a bot's simplistic check for display:none/visibility:hidden is exactly
+   what this avoids triggering). */
+.hp-field {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+  padding: 0;
+  margin: -1px;
+}
+
+.form-alert {
+  border-radius: var(--radius-s);
+  padding: 0.85rem 1rem;
+  font-size: var(--font-size-body-s);
+  margin-bottom: 1.25rem;
+}
+.form-alert--error {
+  background: var(--color-system-error-light);
+  color: var(--color-system-error-dark);
+}
+.form-alert--success {
+  background: var(--color-green-100);
+  color: var(--color-base-800);
+  border: 1px solid var(--color-green-200);
+}
+
+/* ===== LEAD FORM PAGE LAYOUT ===== */
+.lead-layout {
+  display: grid;
+  gap: 2.5rem;
+}
+@media (min-width: 900px) {
+  .lead-layout { grid-template-columns: 0.9fr 1.1fr; gap: 3.5rem; }
+}
+.lead-form-panel {
+  background: var(--color-surface-1);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-m);
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  box-shadow: var(--elevation-1);
+}
+.lead-aside-list { display: grid; gap: 1.25rem; margin-top: 1.5rem; }
+.lead-aside-item {
+  display: flex;
+  gap: 0.9rem;
+  align-items: flex-start;
+}
+.lead-aside-item .dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--color-green-200);
+  margin-top: 0.55rem;
+  flex-shrink: 0;
+}
+
+/* ===== PAGE HERO (tiers / lead pages) ===== */
+.page-hero {
+  padding: clamp(2.5rem, 6vw, 4rem) 0 clamp(2rem, 4vw, 3rem);
+}
+.page-hero h1 { max-width: 20ch; }
+.page-hero p { max-width: 60ch; margin-top: 1rem; }
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: var(--color-primary-green);
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-s);
+  z-index: 3000;
+}
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* =====================================================================
+   VISUAL LAYER — richer surfaces, depth and motion.
+   Appended deliberately: same specificity as the base rules above, so the
+   cascade resolves in source order and these win without !important or
+   selector inflation. Every colour below resolves to a documented token
+   (14-blackboard-com-design-tokens.md) or to white/ink at low alpha.
+   ===================================================================== */
+
+/* ---- Display type: tighter tracking reads sharper at large sizes ---- */
+h1, h2 { letter-spacing: -0.02em; }
+h3 { letter-spacing: -0.01em; }
+
+/* ---- Eyebrow gets a lead rule, so section openings feel deliberate ---- */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.eyebrow::before {
+  content: "";
+  width: 1.6rem;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--color-green-200);
+  flex-shrink: 0;
+}
+
+/* ---- Scroll reveal (main.js adds .is-visible) ---- */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s cubic-bezier(.4,0,.2,1), transform 0.6s cubic-bezier(.4,0,.2,1);
+}
+.reveal.is-visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1 !important; transform: none !important; }
+}
+
+/* ---- Pill badge ---- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-family-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.85rem;
+  border-radius: 100px;
+  background: var(--color-green-100);
+  color: var(--color-primary-green);
+  white-space: nowrap;
+}
+.badge--solid { background: var(--color-primary-green); color: #fff; }
+.badge--accent { background: var(--color-green-200); color: var(--color-primary-dark); }
+
+/* =====================  HERO  ===================== */
+.hero {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(56rem 30rem at 10% -15%, var(--color-green-100) 0%, transparent 62%),
+    radial-gradient(40rem 26rem at 96% -5%, var(--color-opportunity-100) 0%, transparent 68%),
+    var(--color-primary-light);
+}
+/* Faint dot grid — texture without imagery, and it never intercepts clicks. */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(var(--color-base-300) 1px, transparent 1px);
+  background-size: 28px 28px;
+  opacity: 0.35;
+  mask-image: linear-gradient(to bottom, #000 0%, transparent 72%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 72%);
+}
+.hero .wrap { position: relative; z-index: 1; }
+
+.hero h1 { max-width: 15ch; }
+.hero-sub { max-width: 56ch; }
+.hero-ctas { margin-top: 2rem; flex-wrap: wrap; }
+
+/* Trust row under the CTAs */
+.hero-trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 2rem;
+  margin-top: 2.25rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--color-border-subtle);
+}
+.hero-trust div {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--font-size-label-s);
+  color: var(--color-text-medium);
+  font-weight: 500;
+}
+.hero-trust svg { color: var(--color-primary-green); flex-shrink: 0; }
+
+/* Hero art panel — gradient ink card with a soft inner glow */
+.hero-art {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-l);
+  background:
+    radial-gradient(28rem 20rem at 78% 8%, rgba(64,181,152,0.34) 0%, transparent 62%),
+    linear-gradient(152deg, var(--color-primary-green) 0%, var(--color-base-800) 58%, var(--color-primary-dark) 100%);
+  box-shadow: var(--elevation-3);
+  padding: clamp(2rem, 4vw, 3rem);
+}
+.hero-art::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-l);
+  border: 1px solid rgba(255,255,255,0.14);
+  pointer-events: none;
+}
+.hero-art img { height: 72px; width: auto; }
+.hero-art-caption {
+  color: var(--color-green-100);
+  font-size: var(--font-size-body-s);
+  margin-top: 1rem;
+}
+.hero-art-metrics {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+  position: relative;
+  z-index: 1;
+}
+.hero-art-metric {
+  background: rgba(255,255,255,0.09);
+  border: 1px solid rgba(255,255,255,0.16);
+  border-radius: var(--radius-m);
+  padding: 0.9rem 1rem;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.hero-art-metric strong {
+  display: block;
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-title-m);
+  color: #fff;
+  line-height: 1.1;
+}
+.hero-art-metric span {
+  font-size: 0.8rem;
+  color: var(--color-green-100);
+  opacity: 0.85;
+}
+
+/* =====================  CARDS  ===================== */
+.solution-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-m);
+  padding: 2.25rem 1.75rem 2rem;
+}
+/* Accent rule that draws itself on hover */
+.solution-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary-green), var(--color-green-200));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition);
+}
+.solution-card:hover::before { transform: scaleX(1); }
+.solution-card:hover { transform: translateY(-6px); box-shadow: var(--elevation-3); }
+.solution-icon {
+  width: 52px;
+  height: 52px;
+  background: linear-gradient(140deg, var(--color-green-100), var(--color-surface-1));
+  border: 1px solid var(--color-green-200);
+  box-shadow: inset 0 1px 0 #fff;
+}
+
+/* ---- Stat cards ---- */
+.stat-card {
+  border-radius: var(--radius-m);
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+.stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--elevation-2);
+  border-color: var(--color-green-200);
+}
+.stat-card strong { color: var(--color-primary-green); }
+
+/* ---- Proof strip on the green band ---- */
+.proof-item {
+  padding: 1.25rem 0.5rem;
+  border-radius: var(--radius-m);
+  transition: background var(--transition);
+}
+.proof-item:hover { background: rgba(255,255,255,0.08); }
+.proof-item strong { color: #fff; margin-bottom: 0.35rem; }
+
+/* =====================  TIER CARDS  ===================== */
+.tier-teaser-grid { align-items: stretch; }
+.tier-card {
+  position: relative;
+  border-radius: var(--radius-m);
+  padding: 2.25rem 1.75rem;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+.tier-card:hover { transform: translateY(-6px); box-shadow: var(--elevation-3); }
+
+/* The featured tier: green frame + ribbon, mirroring the reference screenshot's
+   "MOST POPULAR" treatment but in the brand green rather than the portal green. */
+.tier-card--featured {
+  border: 2px solid var(--color-primary-green);
+  box-shadow: var(--elevation-2);
+}
+.tier-card--featured .badge {
+  position: absolute;
+  top: -0.85rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.tier-card .badge { margin-bottom: 0.5rem; }
+.tier-card h3 { margin-bottom: 0.4rem; }
+.tier-card .price { font-size: var(--font-size-headline-l); }
+
+/* Check / cross feature list, as in the reference tiers screenshot */
+.feature-list {
+  list-style: none;
+  display: grid;
+  gap: 0.7rem;
+  margin: 1.25rem 0 1.75rem;
+  padding: 0;
+  border-top: 1px solid var(--color-border-subtle);
+  padding-top: 1.25rem;
+}
+.feature-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: var(--font-size-body-s);
+  color: var(--color-text-medium);
+  padding-left: 0;
+}
+.feature-list li::before { display: none; }
+.feature-list svg { flex-shrink: 0; margin-top: 0.15rem; }
+.feature-list .yes svg { color: var(--color-primary-green); }
+.feature-list .no { color: var(--color-text-subtle); }
+.feature-list .no svg { color: var(--color-base-400); }
+
+/* =====================  CTA BAND  ===================== */
+.cta-band {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(34rem 20rem at 85% 0%, rgba(64,181,152,0.3) 0%, transparent 64%),
+    linear-gradient(140deg, var(--color-primary-green), var(--color-primary-dark));
+  padding: clamp(3rem, 6vw, 4.5rem) 0;
+  text-align: center;
+}
+.cta-band h2 { color: #fff; }
+.cta-band p {
+  color: var(--color-green-100);
+  max-width: 54ch;
+  margin: 1rem auto 0;
+}
+/* The CTA band is a dark surface but carries neither .band-dark nor .band-green,
+   so the light-on-dark secondary treatment has to be named explicitly here —
+   without it the outlined button is dark green on dark green and invisible. */
+.cta-band .btn-secondary {
+  border-color: rgba(255,255,255,0.45);
+  color: #fff;
+}
+.cta-band .btn-secondary:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: #fff;
+}
+
+.cta-band .hero-ctas {
+  justify-content: center;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+/* =====================  FOOTER  ===================== */
+.site-footer {
+  border-top: 3px solid var(--color-primary-green);
+  position: relative;
+}
+.footer-col h5 { letter-spacing: 0.12em; }
+.footer-col a {
+  position: relative;
+  width: fit-content;
+  transition: color var(--transition), padding-left var(--transition);
+}
+.footer-col a:hover { padding-left: 0.4rem; color: var(--color-green-200); }
+.footer-col button.link-like:hover { color: var(--color-green-200); }
+.footer-brand p { margin-bottom: 1.25rem; }
+
+.footer-social { display: flex; gap: 0.6rem; }
+.footer-social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border-radius: var(--radius-s);
+  border: 1px solid rgba(255,255,255,0.16);
+  color: var(--color-base-200);
+  transition: background var(--transition), color var(--transition), border-color var(--transition), transform var(--transition);
+}
+.footer-social a:hover {
+  background: var(--color-primary-green);
+  border-color: var(--color-primary-green);
+  color: #fff;
+  transform: translateY(-2px);
+  padding-left: 0;
+}
+
+/* =====================  SECTION HEAD (centred variant)  ===================== */
+.section-head--center {
+  max-width: 68ch;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+.section-head--center .eyebrow { justify-content: center; }
+.section-head--center .section-lead { margin-left: auto; margin-right: auto; }
+
+/* Reveal must never hide content in a context that cannot scroll: printing,
+   PDF export and headless full-page capture never fire IntersectionObserver. */
+@media print {
+  .reveal { opacity: 1 !important; transform: none !important; }
+}
+
+/* Tier grids sized to their card count — a four-up set in the three-up teaser
+   grid orphans the fourth card onto a row of its own. */
+.tier-grid-4, .tier-grid-2 {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+  align-items: stretch;
+}
+@media (min-width: 680px) {
+  .tier-grid-4, .tier-grid-2 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1080px) {
+  .tier-grid-4 { grid-template-columns: repeat(4, 1fr); }
+}
+/* The featured card's ribbon sits above the card edge, so the row needs
+   headroom or it clips under the section above. */
+.tier-grid-4, .tier-teaser-grid { padding-top: 0.85rem; }
+
+/* A tinted tier card and the default badge share the same green-100 ground, so
+   the pill disappears on the Community card. Inside any tier card the badge sits
+   on the white surface instead, which reads on all four tint families. */
+.tier-card .badge:not(.badge--solid) {
+  background: var(--color-surface-1);
+  border: 1px solid var(--color-border-subtle);
+  color: var(--color-primary-green);
+}
+/* Four tiers across needs a smaller heading than three, or the longer names
+   ("Academic / Non-profit DN") run to three lines and knock the cards out of rhythm. */
+@media (min-width: 1080px) {
+  .tier-grid-4 .tier-card h3 { font-size: var(--font-size-title-m); }
+  .tier-grid-4 .tier-card .price { font-size: var(--font-size-headline-m); }
+}
+
+/* ---- Header overflow on small screens ----
+   The wordmark, the login button and the hamburger together exceed a 375px
+   viewport, which pushed the whole document into horizontal scroll. .nav-links
+   carries the margin-right:auto that right-aligns the actions, but it is
+   display:none below 900px, so the actions need their own auto margin there. */
+.nav-actions { margin-left: auto; }
+
+@media (max-width: 899px) {
+  /* Login already has a full-width entry in the mobile drawer; a second copy in
+     the bar is what tips the row over the viewport width. */
+  .nav-actions .js-login-trigger { display: none; }
+  .brand-logo img { max-width: 168px; }
+}
+@media (max-width: 400px) {
+  .brand-logo img { max-width: 132px; }
+}
+
+/* ---- Mobile drawer: park it ABOVE the viewport, not to the right ----
+   It was parked at translateX(100%), one viewport to the right, which grows the
+   document's scrollable area and made every page scroll sideways on a phone.
+   (Pre-existing — the drawer has always been built this way.) Overflow above the
+   scroll origin is never scrollable, so sliding it down from under the header
+   removes the phantom width at the source: no overflow-x:clip or hidden on a
+   root element, which would clip the fixed panel or break the sticky header. */
+.mobile-nav { transform: translateY(-100%); }
+.mobile-nav.is-open { transform: translateY(0); }
+
+/* ---- Mobile drawer geometry ----
+   .mobile-nav lives inside <header>, and the header's backdrop-filter makes it
+   the containing block for fixed-position descendants. So `inset: var(--nav-h) 0 0 0`
+   resolves against the 76px-tall header rather than the viewport, and the drawer
+   collapsed to the height of a single row. Size it explicitly against that box:
+   top:100% is the header's own bottom edge, and the height is stated rather than
+   inferred from `bottom: 0`. */
+.mobile-nav {
+  inset: auto;
+  top: 100%;
+  left: 0;
+  right: 0;
+  bottom: auto;
+  height: calc(100vh - var(--nav-h));
+  height: calc(100dvh - var(--nav-h));
+}
+
+/* =====================  APP CATALOG  =====================
+   Icons are lettermark tiles drawn from the documented accent families rather
+   than the partners' own logos: this is a demo, and shipping real brand marks
+   we have no licence for is not worth the risk. */
+.catalog-note {
+  max-width: 68ch;
+  margin: 0 auto clamp(2rem, 4vw, 2.75rem);
+  padding: 0.9rem 1.1rem;
+  border: 1px solid var(--color-border-medium);
+  border-left: 3px solid var(--color-green-200);
+  border-radius: var(--radius-s);
+  background: var(--color-surface-2);
+  font-size: var(--font-size-label-s);
+  color: var(--color-text-medium);
+  text-align: left;
+}
+.catalog-note strong { color: var(--color-text-strong); }
+
+/* ---- Filter chips ---- */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: center;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+.filter-chip {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-label-s);
+  font-weight: 600;
+  padding: 0.6rem 1.15rem;
+  border-radius: 100px;
+  border: 1px solid var(--color-border-medium);
+  background: var(--color-surface-1);
+  color: var(--color-text-medium);
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition),
+              border-color var(--transition), transform var(--transition);
+}
+.filter-chip:hover {
+  border-color: var(--color-primary-green);
+  color: var(--color-primary-green);
+  transform: translateY(-2px);
+}
+.filter-chip.is-active {
+  background: var(--color-primary-green);
+  border-color: var(--color-primary-green);
+  color: #fff;
+}
+
+/* ---- Grid ---- */
+.app-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 680px) { .app-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1000px) { .app-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.app-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-surface-1);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-m);
+  padding: 1.75rem 1.5rem 1.5rem;
+  box-shadow: var(--elevation-1);
+  overflow: hidden;
+  transition: transform var(--transition), box-shadow var(--transition),
+              border-color var(--transition);
+}
+.app-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary-green), var(--color-green-200));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition);
+}
+.app-card:hover { transform: translateY(-6px); box-shadow: var(--elevation-3); }
+.app-card:hover::before { transform: scaleX(1); }
+.app-card[hidden] { display: none; }
+
+.app-card-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  margin-bottom: 1rem;
+}
+.app-card h3 {
+  font-size: var(--font-size-title-s);
+  margin-bottom: 0.5rem;
+  line-height: 1.25;
+}
+.app-card p {
+  font-size: var(--font-size-body-s);
+  margin-bottom: 1.25rem;
+}
+
+/* Lettermark tile */
+.app-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 46px;
+  height: 46px;
+  border-radius: var(--radius-m);
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-label-m);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.app-icon--green       { background: var(--color-green-100);       color: var(--color-primary-green);  border: 1px solid var(--color-green-200); }
+.app-icon--opportunity { background: var(--color-opportunity-100); color: var(--color-base-700);       border: 1px solid var(--color-opportunity-300); }
+.app-icon--vibrant     { background: var(--color-vibrant-100);     color: var(--color-vibrant-300);    border: 1px solid var(--color-vibrant-200); }
+.app-icon--fireside    { background: var(--color-fireside-100);    color: var(--color-fireside-300);   border: 1px solid var(--color-fireside-200); }
+/* semester-300 (#885e56) on semester-200 is only 4.17:1 — the one accent pair
+   whose own mid-tone fails AA for this size. Ink instead of the family colour. */
+.app-icon--semester    { background: var(--color-semester-200);    color: var(--color-text-strong);    border: 1px solid var(--color-semester-300); }
+
+/* Link sits on the card's bottom edge regardless of description length */
+.app-card-link {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: var(--font-size-label-s);
+  font-weight: 600;
+  color: var(--color-primary-green);
+  text-decoration: none;
+  transition: gap var(--transition);
+}
+.app-card-link:hover { gap: 0.7rem; text-decoration: underline; }
+.app-card-link .btn-arrow { transition: transform var(--transition); }
+.app-card-link:hover .btn-arrow { transform: translateX(2px); }
+
+.app-empty {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--color-text-subtle);
+}
+
+/* A section-head is capped at a 68ch measure, so display-m sets a title like
+   "Official Blackboard App Catalog" over three lines. Inner-page headings drop a
+   step; the homepage hero h1 is outside .section-head and keeps display-m. */
+.section-head h1 { font-size: var(--font-size-display-s); }
+.section-head { max-width: 80ch; }
+
+/* ---- Closed drawer must not paint over the bar it lives in ----
+   Parking the drawer upward (translateY) puts its opaque panel across the header's
+   own 0–76px band. It is a CHILD of .site-header, whose backdrop-filter creates a
+   stacking context, so its z-index:999 is resolved INSIDE the header — above the
+   logo and hamburger, which had no z-index of their own. The bar rendered empty on
+   every page at mobile width. Order them explicitly, and take the closed drawer out
+   of hit-testing and the accessibility tree instead of merely moving it off-screen. */
+.nav-inner { position: relative; z-index: 2; }
+.mobile-nav { z-index: 1; visibility: hidden; }
+.mobile-nav.is-open { visibility: visible; }
+
+/* =====================================================================
+   v3 — navbar scale, wider measure, tier pricing table, FAQ layout
+   ===================================================================== */
+
+/* ---- Wider content measure ----
+   1200px left roughly 350px of dead margin each side on a 1900px display, so
+   every section read as a narrow column floating in the middle. */
+:root {
+  --max-width: 1440px;
+  --nav-h: 60px;
+}
+
+/* ---- Navbar: shorter bar, smaller type, three explicit zones ----
+   Grid rather than flex so the links are centred against the VIEWPORT, not
+   against whatever width the logo and the buttons happen to leave over. */
+.nav-inner {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 1rem;
+}
+.nav-links {
+  justify-self: center;
+  margin-left: 0;
+  margin-right: 0;
+  gap: 0.15rem;
+}
+.nav-actions { justify-self: end; margin-left: 0; }
+
+.brand-logo { gap: 0.5rem; height: auto; }
+.brand-mark { height: 26px; width: auto; }
+.brand-word { height: 21px; width: auto; }
+
+.nav-links a {
+  font-size: 0.9375rem;
+  padding: 0.45rem 0.8rem;
+}
+.nav-links a::after { left: 0.8rem; right: 0.8rem; bottom: 0.1rem; }
+
+.nav-actions .btn {
+  padding: 0.5rem 0.95rem;
+  font-size: 0.8125rem;
+}
+.nav-hamburger { width: 38px; height: 38px; }
+
+@media (max-width: 899px) {
+  /* Two zones only once the links are in the drawer, or the empty centre
+     column pushes the hamburger off the right edge. */
+  .nav-inner { grid-template-columns: auto auto; justify-content: space-between; }
+  .brand-mark { height: 24px; }
+  .brand-word { height: 19px; }
+}
+
+/* ---- FAQ: heading beside the list, not stacked above it ----
+   A centred heading over a centred column was the most "everything is in the
+   middle" part of the page. Side by side fills the wider measure and gives the
+   answers a comfortable reading width instead of a full-bleed one. */
+.faq-layout {
+  display: grid;
+  gap: 2rem;
+  align-items: start;
+}
+@media (min-width: 900px) {
+  .faq-layout { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 4rem; }
+  .faq-layout .section-head { margin-bottom: 0; position: sticky; top: calc(var(--nav-h) + 2rem); }
+}
+.faq-layout .section-head { max-width: none; }
+
+/* =====================  TIER CARDS — pricing-table form  =====================
+   Reference layout: white cards, sans-serif tier names and prices, a rule above
+   the feature list, and the action pinned to the bottom edge so the four buttons
+   line up however long the copy runs. */
+.tier-card {
+  background: var(--color-surface-1);
+  border: 1px solid var(--color-border-subtle);
+  padding: 2rem 1.5rem 1.75rem;
+}
+.tier-card h2,
+.tier-card h3 {
+  font-family: var(--font-family-body);
+  font-weight: 700;
+  font-size: var(--font-size-title-m);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+}
+.tier-card .price {
+  font-family: var(--font-family-body);
+  font-weight: 700;
+  font-size: clamp(1.9rem, 2.6vw, 2.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--color-text-strong);
+  margin: 0.5rem 0 1rem;
+}
+.tier-card .price small {
+  font-family: var(--font-family-body);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--color-text-subtle);
+  letter-spacing: 0;
+  margin-left: 0.15rem;
+}
+.tier-card > p { font-size: var(--font-size-body-s); }
+.tier-card .btn { margin-top: auto; }
+
+/* The featured card's price is the one that should read loudest. */
+.tier-card--featured .price { color: var(--color-primary-green); }
+
+/* Badge sits in flow at the top of every card; only the featured one is lifted
+   onto the border as a ribbon (handled earlier). */
+.tier-grid-4 .tier-card .badge { align-self: flex-start; }
+
+/* Longer ribbon text than "Most popular" needs to not overflow a narrow card. */
+.tier-card--featured .badge {
+  max-width: calc(100% - 1.5rem);
+  text-align: center;
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+}
+
+/* Comparison table and add-on cards keep the neutral card treatment too. */
+.tier-grid-2 .tier-card { padding: 1.75rem 1.5rem; }
+
+/* The featured card's badge is lifted out of flow to sit on the border as a
+   ribbon, so the card loses the badge row's height and its heading starts ~42px
+   higher than its neighbours'. Reserve that space so all four headings, prices
+   and rules line up across the row. */
+.tier-card--featured { padding-top: 4.6rem; }
+
+/* Reserve two lines for the tier name in the four-up row: a name that wraps
+   pushes its own price down and breaks the horizontal read across the cards. */
+@media (min-width: 1080px) {
+  .tier-grid-4 .tier-card h2 { min-height: 2.4em; }
+}
+
+/* Catalog: the note and the filter row follow the heading to the left edge, so
+   the page reads as one left-aligned column like the rest of the site rather
+   than a centred island. */
+.catalog-note { margin-left: 0; margin-right: auto; }
+.filter-bar { justify-content: flex-start; }
+
+/* =====================================================================
+   NAVBAR v4 — matches the reference bar: slim, links left beside the logo,
+   pill-shaped actions pinned right.
+   ===================================================================== */
+:root { --nav-h: 56px; }
+
+/* Back to flex from the centred grid: the reference puts the links immediately
+   after the wordmark, not in the middle of the viewport. margin-left:auto on the
+   actions is what holds them against the right edge. */
+.nav-inner {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 0 1.25rem;
+}
+@media (min-width: 640px) { .nav-inner { padding: 0 1.75rem; } }
+
+.nav-links {
+  justify-self: auto;
+  margin-left: 2rem;
+  margin-right: 0;
+  gap: 0.25rem;
+}
+.nav-actions {
+  justify-self: auto;
+  margin-left: auto;
+  gap: 0.5rem;
+}
+
+.brand-mark { height: 23px; }
+.brand-word { height: 19px; }
+
+/* Links: small, medium weight, brightening to white. The active item is white
+   and semibold with a green rule tucked under the text itself. */
+.nav-links a {
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.4rem 0.7rem;
+  color: var(--color-base-300);
+}
+.nav-links a:hover { background: transparent; color: #fff; }
+.nav-links a[aria-current="page"] { color: #fff; font-weight: 600; }
+.nav-links a::after {
+  left: 0.7rem;
+  right: 0.7rem;
+  bottom: -0.15rem;
+  height: 2px;
+}
+
+/* ---- Pill actions ----
+   Deliberate exception to the brand's near-square button radius (radius-s), which
+   still governs every button in the page body. The reference navbar is explicitly
+   pill-shaped and that is what was asked for, so the override is scoped to the bar
+   alone rather than loosened globally. */
+.nav-actions .btn {
+  border-radius: 100px;
+  padding: 0.5rem 1.15rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+.nav-actions .btn-ghost-light {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.22);
+}
+.nav-actions .btn-ghost-light:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.45);
+  transform: none;
+}
+.nav-actions .btn-accent { padding: 0.5rem 1.25rem; }
+.nav-actions .btn-accent:hover { transform: none; }
+
+/* A slim bar reads better without a hard rule under it. */
+.site-header { border-bottom: 1px solid rgba(255, 255, 255, 0.06); }
+
+.nav-hamburger { width: 36px; height: 36px; border-radius: 100px; }
+
+@media (max-width: 899px) {
+  /* The grid override from v3 no longer applies now that .nav-inner is flex;
+     the hamburger is held right by the same margin-left:auto. */
+  .nav-inner { display: flex; }
+  .brand-mark { height: 22px; }
+  .brand-word { height: 18px; }
+}
+
+/* The reference bar is full-bleed: the wordmark sits against the left edge of the
+   viewport and the CTA against the right, rather than inside the 1440px content
+   column. Only the bar does this — page sections keep the shared measure. */
+.nav-inner {
+  max-width: none;
+  padding: 0 1.5rem;
+}
+@media (min-width: 640px) { .nav-inner { padding: 0 2rem; } }
+
+/* ---- Nav links centred against the bar ----
+   Grid, not flex: with flex the links only sit after the logo, so they land
+   wherever the logo's width leaves them. `1fr auto 1fr` gives the two side
+   columns equal width, which puts the middle column on the true centre of the
+   bar however wide the wordmark or the button pair happen to be.
+
+   The explicit grid-column on each child matters: below 900px .nav-links is
+   display:none, and without it .nav-actions would be auto-placed into column 2
+   and the hamburger would sit in the middle of the bar. */
+.nav-inner {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+}
+.brand-logo  { grid-column: 1; justify-self: start; }
+.nav-links   { grid-column: 2; justify-self: center; margin-left: 0; margin-right: 0; }
+.nav-actions { grid-column: 3; justify-self: end; margin-left: 0; }
+
+@media (max-width: 899px) { .nav-inner { display: grid; } }
+
+/* Centring the links makes the bar's width budget tighter than when they sat
+   left: at ~1025px the gap between the links and the button pair closed to 4px.
+   Hold the green CTA back until there is comfortable room; below this the bar
+   still shows the links plus Client Login, and the CTA lives in the page anyway. */
+.nav-cta { display: none; }
+@media (min-width: 1180px) { .nav-cta { display: inline-flex; } }
+
+/* Centring is symmetric, so the links drift toward whichever side carries less
+   weight: with the CTA hidden below 1180px they slide left and close on the
+   wordmark (4px at ~985px). Tighten the mark and the link padding across that
+   band to buy the gap back rather than giving up the centre. */
+@media (min-width: 900px) and (max-width: 1179px) {
+  .brand-word { height: 16px; }
+  .brand-mark { height: 20px; }
+  .brand-logo { gap: 0.4rem; }
+  .nav-links a { padding: 0.4rem 0.5rem; font-size: 0.8125rem; }
+  .nav-links a::after { left: 0.5rem; right: 0.5rem; }
+}
+
+/* Between 900 and 979px the centred links run right up against the wordmark
+   (0px at 900px). Rather than shave the type further, hand that band to the
+   drawer — the links reappear at 980px, where the gap is a comfortable ~26px. */
+@media (min-width: 900px) and (max-width: 979px) {
+  .nav-links { display: none; }
+  .nav-hamburger { display: inline-flex; }
+  .mobile-nav { display: block; }
+  .nav-actions .js-login-trigger { display: none; }
+  .brand-word { height: 19px; }
+  .brand-mark { height: 23px; }
+  .brand-logo { gap: 0.5rem; }
+}
+
+/* Nav links a step larger. Wider links eat into the centring budget that the
+   breakpoints above were tuned for, so the mid band gets the smaller of the two
+   sizes and the gaps are re-checked at 980 / 1180 / wide. */
+.nav-links a { font-size: 0.9375rem; }
+@media (min-width: 900px) and (max-width: 1179px) {
+  .nav-links a { font-size: 0.875rem; }
+}
+
+/* The larger link size narrows the logo-to-links gap at the bottom of the band
+   (16px at 980px, down from 27px). Extend the drawer up to 1009px so the links
+   only appear from 1010px, where that gap is back to a comfortable ~30px. */
+@media (min-width: 980px) and (max-width: 1009px) {
+  .nav-links { display: none; }
+  .nav-hamburger { display: inline-flex; }
+  .mobile-nav { display: block; }
+  .nav-actions .js-login-trigger { display: none; }
+  .brand-word { height: 19px; }
+  .brand-mark { height: 23px; }
+  .brand-logo { gap: 0.5rem; }
+}

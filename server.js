@@ -33,7 +33,41 @@ const path = require('path');
 const crypto = require('crypto');
 
 const PORT = process.env.PORT || 5500;
-const ROOT = __dirname;
+
+/* Where the site's files actually live at runtime.
+ *
+ * `public/` is the one layout that works in both places at once:
+ *   - Locally, this server reads the files from it directly.
+ *   - On Vercel, `server.js` is auto-detected as a Node backend entrypoint and
+ *     bundled into a single function. That bundle contains only the JS reachable
+ *     by require() — never the HTML/CSS/assets — which is why the first deploy
+ *     404'd on every page. Vercel serves `public/` from the CDN automatically,
+ *     so those requests now never reach this function at all.
+ *
+ * Kept as a probe rather than a constant so a host that relocates the entrypoint
+ * away from the site files still finds them instead of 404ing everything. */
+const ROOT_CANDIDATES = [
+    path.join(__dirname, 'public'),
+    path.join(process.cwd(), 'public'),
+    __dirname
+];
+
+const ROOT = (() => {
+    for (const candidate of ROOT_CANDIDATES) {
+        try {
+            if (fs.existsSync(path.join(candidate, 'index.html'))) {
+                return candidate;
+            }
+        } catch (_) { /* unreadable candidate is simply not the root */ }
+    }
+    // Nothing matched. Keep the conventional path so behaviour is unchanged, but say
+    // so loudly — a silent fallback here is what makes this class of bug hard to find.
+    console.error(
+        '[startup] Could not locate index.html in any of: ' + ROOT_CANDIDATES.join(', ')
+        + '. Static files will 404. __dirname=' + __dirname + ' cwd=' + process.cwd()
+    );
+    return path.join(__dirname, 'public');
+})();
 
 /* ---- Salesforce configuration -------------------------------------------
  * Server-side only. These deliberately do NOT come from the page — a route that
@@ -100,14 +134,26 @@ const SF_LANDING_ROUTE = process.env.SF_LANDING_ROUTE || '';
  */
 const SF_CLIENT_ID = process.env.SF_CLIENT_ID || '';
 
+const MISSING_CLIENT_ID_MESSAGE =
+    '[startup] SF_CLIENT_ID is not set. Copy it from Setup -> External Client App Manager -> '
+    + 'Blackboard_Partner_Website -> Settings -> OAuth -> Manage Consumer Details. Locally that '
+    + 'goes in .env; on Vercel it is a Project Settings -> Environment Variables entry, because '
+    + '.env is gitignored and never reaches the deploy.';
+
+/* Running standalone (npm run dev) we still fail loudly and immediately: a missing
+ * client id turns every login into a confusing Salesforce error instead of one clear
+ * one. But on a serverless host the same process.exit() aborts the whole invocation,
+ * so a missing variable takes down the MARKETING PAGES too and surfaces as an opaque
+ * FUNCTION_INVOCATION_FAILED. There, stay up and fail only /api/login — a visitor can
+ * still read the tiers and submit the lead form. */
 if (!SF_CLIENT_ID) {
-    console.error(
-        '[startup] SF_CLIENT_ID is not set. Copy it from Setup -> External Client App Manager -> '
-        + 'Blackboard_Partner_Website -> Settings -> OAuth -> Manage Consumer Details, into .env. '
-        + 'Refusing to start without it — a missing client id fails every login attempt with a '
-        + 'confusing Salesforce error instead of this one clear message.'
-    );
-    process.exit(1);
+    console.error(MISSING_CLIENT_ID_MESSAGE);
+    // Exit only on a developer's own machine. On a hosted deploy (Vercel sets VERCEL=1)
+    // this same exit takes the whole site down and surfaces as an opaque platform error,
+    // so there we stay up, serve the marketing pages, and fail only /api/login.
+    if (require.main === module && !process.env.VERCEL) {
+        process.exit(1);
+    }
 }
 
 /* Full URL of the guest Apex REST endpoint that creates the Lead. A complete URL
@@ -538,10 +584,14 @@ async function handleLead(req, res) {
 
 /* ---- Routing ------------------------------------------------------------- */
 
-const server = http.createServer((req, res) => {
+function requestHandler(req, res) {
     const routePath = req.url.split('?')[0];
 
     if (req.method === 'POST' && routePath === '/api/login') {
+        if (!SF_CLIENT_ID) {
+            sendJson(res, 503, { error: 'Login is not configured on this deployment yet.' });
+            return;
+        }
         handleLogin(req, res);
         return;
     }
@@ -552,6 +602,43 @@ const server = http.createServer((req, res) => {
     // Fallback for a visitor who already has a session elsewhere, or who wants
     // to bypass the marketing site's modal — lands on the portal HOME (not
     // /login), so someone already signed in goes straight to the dashboard.
+    /* Diagnostic for hosted deploys. Reports only which of the site's own public
+     * files the server can see, plus the resolved root — never file CONTENT, and
+     * never an environment value beyond whether the client id is configured. It
+     * exists because a 404 on styles.css is indistinguishable, from the outside,
+     * between "wrong root", "file missing from the bundle" and "route not reached". */
+    if (req.method === 'GET' && routePath === '/__health') {
+        const expected = [
+            'index.html', 'tiers.html', 'become-a-partner.html',
+            'styles.css', 'main.js', 'headless-login.js', 'lead-form.js',
+            'assets/bbLogoGreen.svg'
+        ];
+        const readable = {};
+        for (const rel of expected) {
+            try {
+                readable[rel] = fs.existsSync(path.join(ROOT, rel));
+            } catch (_) {
+                readable[rel] = false;
+            }
+        }
+        let rootListing = [];
+        try {
+            rootListing = fs.readdirSync(ROOT).slice(0, 40);
+        } catch (e) {
+            rootListing = ['<unreadable: ' + e.code + '>'];
+        }
+        sendJson(res, 200, {
+            root: ROOT,
+            dirname: __dirname,
+            cwd: process.cwd(),
+            onVercel: !!process.env.VERCEL,
+            clientIdConfigured: !!SF_CLIENT_ID,
+            readable,
+            rootListing
+        });
+        return;
+    }
+
     if (req.method === 'GET' && routePath === '/portal-login') {
         res.writeHead(302, { Location: `${SF_SITE_URL}/` });
         res.end();
@@ -563,11 +650,25 @@ const server = http.createServer((req, res) => {
     }
     res.writeHead(405);
     res.end('Method not allowed');
-});
+}
 
-server.listen(PORT, () => {
-    console.log(`Blackboard partner website running at http://localhost:${PORT}`);
-    console.log(`Salesforce site:   ${SF_SITE_URL}`);
-    console.log(`Requested scopes:  ${SF_SCOPES}`);
-    console.log(`Lead endpoint:     ${SF_LEAD_ENDPOINT}`);
-});
+/* Two ways this file gets used, and they need opposite things:
+ *
+ *   npm run dev  -> a long-lived process that owns a port and calls listen().
+ *   Vercel       -> a serverless function that must EXPORT a (req, res) handler
+ *                   and must never call listen(); a file that only listens
+ *                   exports nothing, and the platform reports the resulting
+ *                   empty module as FUNCTION_INVOCATION_FAILED.
+ *
+ * Exporting the handler satisfies the host, and gating listen() on require.main
+ * keeps the local server behaving exactly as before. */
+module.exports = requestHandler;
+
+if (require.main === module) {
+    http.createServer(requestHandler).listen(PORT, () => {
+        console.log(`Blackboard partner website running at http://localhost:${PORT}`);
+        console.log(`Salesforce site:   ${SF_SITE_URL}`);
+        console.log(`Requested scopes:  ${SF_SCOPES}`);
+        console.log(`Lead endpoint:     ${SF_LEAD_ENDPOINT}`);
+    });
+}

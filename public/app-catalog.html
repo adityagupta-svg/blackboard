@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>App Catalog</title>
+<meta name="description" content="Browse verified LTI 1.3 integrations built by the Blackboard Developer Network and published to institutions running Learn Ultra." />
+<link rel="icon" type="image/svg+xml" href="assets/bbLogoMarkGreen.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Wittgenstein:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<!-- ===== HEADER ===== -->
+<header class="site-header" id="siteHeader">
+  <div class="nav-inner">
+    <a href="index.html" class="brand-logo" aria-label="Blackboard home">
+      <img class="brand-mark" src="assets/bbLogoMarkLight.svg" alt="" width="26" height="26" />
+      <img class="brand-word" src="assets/bbLogoLight.svg" alt="Blackboard" width="120" height="21" />
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="tiers.html">Partner Tiers</a>
+      <a href="app-catalog.html" aria-current="page">App Catalog</a>
+      <a href="become-a-partner.html">Become a Partner</a>
+    </nav>
+    <div class="nav-actions">
+      <button type="button" class="btn btn-ghost-light js-login-trigger">Client Login</button>
+      <a href="become-a-partner.html" class="btn btn-accent nav-cta">Become a partner</a>
+      <button type="button" class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-controls="mobileNav" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobileNav" aria-label="Mobile">
+    <a href="index.html">Home</a>
+    <a href="tiers.html">Partner Tiers</a>
+      <a href="app-catalog.html" aria-current="page">App Catalog</a>
+    <a href="become-a-partner.html">Become a Partner</a>
+    <a href="become-a-partner.html" class="btn btn-accent btn-block" style="margin-top:1.25rem;">Become a partner</a>
+    <button type="button" class="btn btn-ghost-light btn-block js-login-trigger" style="margin-top:0.6rem;">Client Login</button>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- ===== CATALOG HERO ===== -->
+  <section class="section" style="padding-bottom: 0;">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Partner ecosystem</span>
+        <h1>Official Blackboard App Catalog</h1>
+        <p class="section-lead">Discover verified LTI 1.3 integrations built by our global
+        Developer Network. Once enrolled, your application is published to institutions
+        running Learn Ultra.</p>
+      </div>
+
+      <!-- This site is a programme demo, and the listings below are illustrative: the
+           products are real, but their tier badges are sample data, not commercial fact.
+           Saying so on the page matters more than the footer's general disclaimer, because
+           a catalogue entry reads as a statement about a named third party. -->
+      <p class="catalog-note" role="note">
+        <strong>Illustrative listings.</strong> This is a demonstration of the App Catalog.
+        The partner tiers shown against each product are sample data and do not reflect any
+        actual commercial agreement.
+      </p>
+
+      <div class="filter-bar reveal" role="group" aria-label="Filter integrations by partner tier">
+          <button type="button" class="filter-chip is-active" data-filter="all" aria-pressed="true">All integrations</button>
+          <button type="button" class="filter-chip" data-filter="dn" aria-pressed="false">Developer Network</button>
+          <button type="button" class="filter-chip" data-filter="academic" aria-pressed="false">Academic DN</button>
+          <button type="button" class="filter-chip" data-filter="enterprise" aria-pressed="false">Enterprise</button>
+      </div>
+
+      <div class="app-grid reveal" id="appGrid">
+        <article class="app-card" data-category="dn">
+          <div class="app-card-head">
+            <span class="app-icon app-icon--green" aria-hidden="true">EA</span>
+            <div>
+              <h3>Echo360 Active Learning</h3>
+              <span class="badge">Developer Network</span>
+            </div>
+          </div>
+          <p>Automated lecture capture, interactive video quizzes, and student engagement analytics synchronised with Learn Ultra course rosters.</p>
+          <a class="app-card-link" href="become-a-partner.html">1EdTech Certified LTI 1.3 <span class="btn-arrow" aria-hidden="true">&rarr;</span></a>
+        </article>
+        <article class="app-card" data-category="enterprise">
+          <div class="app-card-head">
+            <span class="app-icon app-icon--opportunity" aria-hidden="true">TF</span>
+            <div>
+              <h3>Turnitin Feedback Studio</h3>
+              <span class="badge">Gold Partner</span>
+            </div>
+          </div>
+          <p>Comprehensive plagiarism prevention, grading rubrics, and AI writing detection embedded directly into Learn Ultra assignment workflows.</p>
+          <a class="app-card-link" href="become-a-partner.html">Deep Linking &amp; AGS Compliant <span class="btn-arrow" aria-hidden="true">&rarr;</span></a>
+        </article>
+        <article class="app-card" data-category="dn">
+          <div class="app-card-head">
+            <span class="app-icon app-icon--vibrant" aria-hidden="true">L3</span>
+            <div>
+              <h3>Labster 3D Science Labs</h3>
+              <span class="badge">Developer Network</span>
+            </div>
+          </div>
+          <p>Interactive 3D STEM laboratory simulations that write student completion grades back into the Blackboard Learn Ultra gradebook automatically.</p>
+          <a class="app-card-link" href="become-a-partner.html">Gradebook Sync &amp; Roster Pass <span class="btn-arrow" aria-hidden="true">&rarr;</span></a>
+        </article>
+        <article class="app-card" data-category="enterprise">
+          <div class="app-card-head">
+            <span class="app-icon app-icon--fireside" aria-hidden="true">MH</span>
+            <div>
+              <h3>McGraw-Hill Connect</h3>
+              <span class="badge">Gold Partner</span>
+            </div>
+          </div>
+          <p>Adaptive digital courseware, automated homework grading, and institutional bookstore licensing distribution.</p>
+          <a class="app-card-link" href="become-a-partner.html">Direct Course Integration <span class="btn-arrow" aria-hidden="true">&rarr;</span></a>
+        </article>
+        <article class="app-card" data-category="dn">
+          <div class="app-card-head">
+            <span class="app-icon app-icon--opportunity" aria-hidden="true">SM</span>
+            <div>
+              <h3>Smowltech Monitoring</h3>
+              <span class="badge">Developer Network</span>
+            </div>
+          </div>
+          <p>European exam authentication and biometric verification built to comply with GDPR privacy requirements.</p>
+          <a class="app-card-link" href="become-a-partner.html">EMEA Verified Solution <span class="btn-arrow" aria-hidden="true">&rarr;</span></a>
+        </article>
+        <article class="app-card" data-category="academic">
+          <div class="app-card-head">
+            <span class="app-icon app-icon--semester" aria-hidden="true">RL</span>
+            <div>
+              <h3>Riverbend Lab Simulators</h3>
+              <span class="badge">Academic DN</span>
+            </div>
+          </div>
+          <p>Interactive physics and chemistry laboratory simulations designed by university research groups.</p>
+          <a class="app-card-link" href="become-a-partner.html">Higher Ed Research Integration <span class="btn-arrow" aria-hidden="true">&rarr;</span></a>
+        </article>
+      </div>
+
+      <p class="app-empty" id="appEmpty" hidden>No integrations match that tier yet.</p>
+    </div>
+  </section>
+
+  <!-- ===== CATALOG CTA ===== -->
+  <section class="cta-band" style="margin-top: clamp(3rem, 7vw, 6rem);">
+    <div class="wrap">
+      <h2>Want your integration listed here?</h2>
+      <p>App Catalog listing is included from the Community tier up. Tell us what you are
+      building and we will get you set up.</p>
+      <div class="hero-ctas">
+        <a href="become-a-partner.html" class="btn btn-accent btn-lg">Become a partner <span class="btn-arrow" aria-hidden="true">&rarr;</span></a>
+        <a href="tiers.html" class="btn btn-secondary btn-lg">Compare all tiers</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="assets/bbLogoLight.svg" alt="Blackboard" width="150" height="30" />
+        <p>The Integration Partnership Program connects developers, publishers, and institutions to the Blackboard platform millions of learners use every day.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Blackboard on LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.07 1.4-2.07 2.86V21H9z"/></svg></a>
+          <a href="#" aria-label="Blackboard on X"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 3h3.2l-7 8 8.2 10h-6.4l-5-6.1L4.7 21H1.5l7.5-8.6L1.2 3h6.6l4.5 5.6zm-1.1 16h1.8L7.7 4.8H5.8z"/></svg></a>
+          <a href="#" aria-label="Blackboard on YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.2-.4-4.7a3 3 0 0 0-2.1-2.1C18.9 4.8 12 4.8 12 4.8s-6.9 0-8.5.4a3 3 0 0 0-2.1 2.1C1 8.8 1 12 1 12s0 3.2.4 4.7a3 3 0 0 0 2.1 2.1c1.6.4 8.5.4 8.5.4s6.9 0 8.5-.4a3 3 0 0 0 2.1-2.1C23 15.2 23 12 23 12zM9.8 15.3V8.7l5.7 3.3z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Products</h5>
+        <a href="#">Blackboard LMS</a>
+        <a href="#">Blackboard Ally</a>
+        <a href="#">Blackboard Illuminate</a>
+        <a href="#">Blackboard Evaluate</a>
+        <a href="#">Institutional Effectiveness</a>
+        <a href="#">Cursive by Blackboard</a>
+      </div>
+      <div class="footer-col">
+        <h5>Trust &amp; Legal</h5>
+        <a href="#">Blackboard Trust Center</a>
+        <a href="#">Security</a>
+        <a href="#">Privacy Statement</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Our Commitment to Accessibility</a>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <a href="#">Our Story</a>
+        <a href="#">Careers</a>
+        <a href="#">Newsroom</a>
+        <a href="#">Events</a>
+        <a href="#">Partners</a>
+      </div>
+      <div class="footer-col">
+        <h5>Connect</h5>
+        <a href="tiers.html">Partner Tiers</a>
+      <a href="app-catalog.html">App Catalog</a>
+        <a href="become-a-partner.html">Become a Partner</a>
+        <a href="#">Contact Us</a>
+        <button type="button" class="link-like js-login-trigger">Client Login</button>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Blackboard Inc. All rights reserved.</span>
+      <span>Demo site for the Integration Partnership Program.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== SHARED LOGIN MODAL ===== -->
+<div class="login-modal" id="loginModal" aria-hidden="true">
+  <div class="login-modal-backdrop"></div>
+  <div class="login-modal-panel" role="dialog" aria-modal="true" aria-labelledby="loginModalTitle">
+    <button type="button" class="login-modal-close" id="loginClose" aria-label="Close">&times;</button>
+    <h3 id="loginModalTitle">Client Login</h3>
+    <p class="login-modal-sub">Sign in to the Blackboard Partner Hub.</p>
+    <form id="loginForm" novalidate>
+      <div class="field">
+        <label for="loginUsername">Username</label>
+        <input type="text" id="loginUsername" name="username" autocomplete="username" required />
+      </div>
+      <div class="field">
+        <label for="loginPassword">Password</label>
+        <input type="password" id="loginPassword" name="password" autocomplete="current-password" required />
+      </div>
+      <p class="login-modal-error form-alert form-alert--error" id="loginError" role="alert" hidden></p>
+      <button type="submit" class="btn btn-primary btn-block" id="loginSubmit">Log In</button>
+      <p class="login-modal-fallback">
+        Trouble logging in?
+        <a id="loginFallback" href="/portal-login">Open the partner portal directly</a>.
+      </p>
+    </form>
+  </div>
+</div>
+
+<script src="headless-login.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

@@ -195,3 +195,72 @@
     close: closeLoginModal
   };
 })();
+
+/* ---- Scroll reveal ---------------------------------------------------------
+ * Fades blocks in as they enter the viewport. Deliberately fails OPEN: the
+ * .reveal class starts elements at opacity 0, so if IntersectionObserver is
+ * missing (or this script never runs) the content would be permanently
+ * invisible. Both guards below reveal everything immediately instead.
+ * prefers-reduced-motion is handled in CSS, which forces .reveal visible. */
+(function () {
+  var nodes = document.querySelectorAll('.reveal');
+  if (!nodes.length) { return; }
+
+  function revealAll() {
+    nodes.forEach(function (el) { el.classList.add('is-visible'); });
+  }
+
+  if (!('IntersectionObserver' in window)) { revealAll(); return; }
+
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    revealAll();
+    return;
+  }
+
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 });
+
+  nodes.forEach(function (el) { observer.observe(el); });
+})();
+
+/* ---- App Catalog tier filter ----------------------------------------------
+ * Progressive enhancement: the markup ships every card visible, so with JS off
+ * the catalogue is still a complete, readable list — the chips simply do nothing.
+ * Filtering uses the [hidden] attribute (plus a CSS rule, since display:flex on
+ * .app-card would otherwise beat the UA's [hidden] { display: none }), which
+ * keeps hidden cards out of the accessibility tree rather than just out of sight. */
+(function () {
+  var grid = document.getElementById('appGrid');
+  if (!grid) { return; }
+
+  var chips = document.querySelectorAll('.filter-chip');
+  var cards = grid.querySelectorAll('.app-card');
+  var empty = document.getElementById('appEmpty');
+
+  function apply(filter) {
+    var shown = 0;
+    cards.forEach(function (card) {
+      var match = filter === 'all' || card.getAttribute('data-category') === filter;
+      card.hidden = !match;
+      if (match) { shown++; }
+    });
+    if (empty) { empty.hidden = shown !== 0; }
+  }
+
+  chips.forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      chips.forEach(function (c) {
+        var active = c === chip;
+        c.classList.toggle('is-active', active);
+        c.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
+      apply(chip.getAttribute('data-filter'));
+    });
+  });
+})();
